@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rachell Dionisio — Operations & Automation VA</title>
+<meta name="description" content="Executive VA turned automation builder. Zapier, Make, and AI workflows that run the back office so founders don't have to.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F8F6FC;
+  --card:#FFFFFF;
+  --ink:#2E1A4F;
+  --ink-soft:#6E6390;
+  --blue:#7440C8;
+  --violet:#9B6DE8;
+  --amber:#F29FC5;
+  --line:#E5DEF2;
+  --radius:18px;
+  --maxw:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Instrument Sans',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:17px;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:56px 56px;
+  background-position:-1px -1px;
+}
+::selection{background:var(--amber);color:var(--ink)}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12;letter-spacing:-0.02em}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+/* ---------- mono node labels (structural signature) ---------- */
+.node-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.node-label::before{
+  content:"";width:10px;height:10px;border-radius:50%;
+  background:var(--card);border:2.5px solid var(--blue);
+  box-shadow:0 0 0 4px rgba(116,64,200,.14);
+}
+
+/* ---------- nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,246,250,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  max-width:var(--maxw);margin:0 auto;padding:16px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{font-family:'Sora',sans-serif;font-weight:800;font-size:15px;letter-spacing:.02em;text-decoration:none}
+.brand span{color:var(--blue)}
+.nav-links{display:flex;gap:26px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:14.5px;font-weight:500;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--ink)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:#fff;text-decoration:none;
+  font-family:'Sora',sans-serif;font-weight:600;font-size:14.5px;
+  padding:11px 20px;border-radius:999px;border:2px solid var(--ink);
+  transition:transform .15s ease, background .15s ease;
+}
+.btn:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{
+  max-width:var(--maxw);margin:0 auto;padding:84px 24px 72px;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+}
+.hero h1{font-size:clamp(38px,5.4vw,62px);font-weight:800;margin:18px 0 22px}
+.hero h1 em{font-style:normal;color:var(--blue);position:relative;white-space:nowrap}
+.hero h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:6px;height:12px;
+  background:var(--amber);opacity:.55;z-index:-1;border-radius:3px;
+}
+.hero p.lede{font-size:19px;color:var(--ink-soft);max-width:52ch;margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- live scenario card (signature) ---------- */
+.scenario{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;box-shadow:0 24px 60px -30px rgba(46,26,79,.22);
+}
+.scenario-head{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);
+}
+.dot-live{display:inline-flex;align-items:center;gap:7px;color:var(--blue)}
+.dot-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.flow{list-style:none;position:relative}
+.flow::before{
+  content:"";position:absolute;left:15px;top:14px;bottom:14px;width:2px;
+  background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px);
+}
+.flow li{
+  position:relative;padding:11px 0 11px 46px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+}
+.flow li::before{
+  content:"";position:absolute;left:8px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;border-radius:50%;
+  background:var(--card);border:3px solid var(--line);z-index:1;
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+.flow li.on::before{border-color:var(--blue);box-shadow:0 0 0 5px rgba(116,64,200,.16)}
+.flow .step{font-family:'Sora',sans-serif;font-weight:600;font-size:15.5px}
+.flow .via{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);white-space:nowrap}
+.flow li.on .step{color:var(--blue)}
+.scenario-foot{
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:14px;color:var(--ink-soft);
+}
+.scenario-foot strong{color:var(--ink)}
+
+/* ---------- generic section ---------- */
+section{max-width:var(--maxw);margin:0 auto;padding:72px 24px}
+.sec-head{margin-bottom:40px}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;margin-top:14px;max-width:22ch}
+
+/* ---------- about + case ---------- */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.about-grid p{color:var(--ink-soft);margin-bottom:16px}
+.about-grid p strong{color:var(--ink)}
+.case{
+  background:var(--ink);color:#F3EDFB;border-radius:var(--radius);padding:30px 28px;
+}
+.case .node-label{color:var(--amber)}
+.case .node-label::before{border-color:var(--amber);background:var(--ink);box-shadow:0 0 0 4px rgba(242,159,197,.18)}
+.case h3{font-size:21px;margin:12px 0 10px}
+.case p{color:#C9B9E0;font-size:15.5px;margin-bottom:20px}
+.case-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.case-stats div{border-top:2px solid rgba(242,159,197,.55);padding-top:10px}
+.case-stats b{font-family:'Sora',sans-serif;font-size:22px;display:block;color:#fff}
+.case-stats span{font-size:12.5px;color:#C9B9E0}
+
+/* ---------- projects ---------- */
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.proj{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px;display:flex;flex-direction:column;gap:14px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.proj:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(46,26,79,.26)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+  padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft);
+}
+.tag.hi{border-color:var(--violet);color:var(--violet);background:rgba(155,109,232,.10)}
+.proj h3{font-size:20px}
+.proj .io{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--blue);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.proj .io .arrow{color:var(--ink-soft)}
+.proj p{font-size:15.5px;color:var(--ink-soft)}
+.proj .result{
+  margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);
+  font-size:15px;color:var(--ink);
+}
+.proj .result b{color:var(--blue)}
+
+/* ---------- testimonials ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.quote{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;font-size:16px;
+}
+.quote p{font-style:italic;color:var(--ink);margin-bottom:16px}
+.quote footer{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);letter-spacing:.05em}
+
+/* ---------- stack ---------- */
+.stack{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  font-family:'Sora',sans-serif;font-weight:600;font-size:14px;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:10px 16px;transition:border-color .15s ease,color .15s ease;
+}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ---------- experience ---------- */
+.timeline{list-style:none;position:relative;max-width:720px}
+.timeline::before{
+  content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;
+  background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px);
+}
+.timeline li{position:relative;padding:0 0 34px 38px}
+.timeline li::before{
+  content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;
+  background:var(--card);border:3px solid var(--blue);
+}
+.timeline .when{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue);letter-spacing:.1em}
+.timeline h3{font-size:18px;margin:6px 0 4px}
+.timeline p{font-size:15.5px;color:var(--ink-soft)}
+
+/* ---------- contact ---------- */
+.contact{
+  background:var(--ink);color:#fff;border-radius:24px;
+  max-width:var(--maxw);margin:0 auto 80px;padding:64px 40px;text-align:center;
+}
+.contact h2{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:14px}
+.contact p{color:#C9B9E0;max-width:52ch;margin:0 auto 30px}
+.contact .btn{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.contact .btn:hover{background:#fff;border-color:#fff}
+footer.site{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px 40px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:13.5px;color:var(--ink-soft);
+}
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:56px;gap:40px}
+  .about-grid{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr}
+  .nav-links li:not(:last-child){display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top">RACHELL<span>·</span>DIONISIO</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Builds</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a class="btn" href="https://calendly.com/dionisiochell/discoverycallwithchell" target="_blank" rel="noopener">Book a call</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="node-label">Executive Ops · No-code Automation · AI Agents</span>
+      <h1>I used to <em>be</em> the system.<br>Now I build them.</h1>
+      <p class="lede">For years I was the second brain behind founders and executives — running inboxes, calendars, and CRMs by hand. Now I build the Zapier, Make, and AI workflows that do that work automatically.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://calendly.com/dionisiochell/discoverycallwithchell" target="_blank" rel="noopener">Book a 20-min call</a>
+        <a class="btn ghost" href="#work">See the builds ↓</a>
+      </div>
+    </div>
+
+    <!-- signature: live scenario card -->
+    <aside class="scenario" aria-label="Example automated lead workflow">
+      <div class="scenario-head">
+        <span>scenario / lead-pipeline.v2</span>
+        <span class="dot-live">running</span>
+      </div>
+      <ul class="flow" id="flow">
+        <li><span class="step">Lead in</span><span class="via">form / message</span></li>
+        <li><span class="step">Enriched</span><span class="via">Apollo + AI</span></li>
+        <li><span class="step">Routed</span><span class="via">priority path</span></li>
+        <li><span class="step">Followed up</span><span class="via">email + Slack</span></li>
+        <li><span class="step">Closed</span><span class="via">no human chasing</span></li>
+      </ul>
+      <div class="scenario-foot">Every step above runs itself. <strong>That's the job.</strong></div>
+    </aside>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head reveal">
+      <span class="node-label">About</span>
+      <h2>I've sat inside the chaos I now automate.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>For the last few years I've been the operations layer behind founders and executives — filtering inboxes, running calendars, chasing follow-ups, and keeping CRMs honest. That seat taught me exactly where a business quietly leaks time: the lead that sits three days without a reply, the follow-up someone meant to send, the recording that never gets turned into content.</p>
+        <p>Now I build the systems that close those gaps — in <strong>Zapier</strong>, <strong>Make</strong>, and <strong>Asana</strong>, with AI doing the parts that used to take a person an afternoon.</p>
+        <p><strong>I'm not a developer who picked up business skills. I'm an operator who learned to build.</strong></p>
+      </div>
+      <div class="case reveal">
+        <span class="node-label">From the field</span>
+        <h3>Calendar chaos → control</h3>
+        <p>A CEO was running 9–12 meetings a day, with follow-ups falling through constantly. I audited every meeting type, introduced async updates and booking rules, and built a follow-up tracker.</p>
+        <div class="case-stats">
+          <div><b>−40%</b><span>meetings on the calendar</span></div>
+          <div><b>Faster</b><span>decision cycles</span></div>
+          <div><b>Zero</b><span>missed commitments</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="sec-head reveal">
+      <span class="node-label">Selected builds</span>
+      <h2>Four systems, four different bottlenecks.</h2>
+    </div>
+    <div class="projects">
+
+      <article class="proj reveal">
+        <div class="proj-tags"><span class="tag hi">Zapier + Make</span><span class="tag">AI Content</span><span class="tag">Multi-platform</span></div>
+        <h3>One recording becomes a week of content</h3>
+        <div class="io">Drive upload <span class="arrow">→</span> transcript <span class="arrow">→</span> blog + social <span class="arrow">→</span> published ×3</div>
+        <p>A Drive trigger catches new .mp4 files. AI transcribes and drafts blog posts, then branches into platform paths — AI-generated images per post, with Facebook, Instagram, and LinkedIn publishing once content clears review. Built twice: once in Zapier, once in Make.</p>
+        <div class="result">One upload now produces a transcript, blog posts, social images, and published posts across three platforms — <b>zero copy-pasting</b>.</div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-tags"><span class="tag hi">Make</span><span class="tag">AI Agent</span><span class="tag">Facebook Pages</span></div>
+        <h3>Messages get answered before the team even sees them</h3>
+        <div class="io">Webhook <span class="arrow">→</span> Gemini agent + knowledge base <span class="arrow">→</span> reply</div>
+        <p>A webhook catches incoming Page messages and hands them to an AI agent trained on the company's own knowledge base, with memory to keep conversations coherent, then sends the reply back automatically.</p>
+        <div class="result">Common questions get an <b>instant, on-brand answer around the clock</b> — the team only steps in for what needs a person.</div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-tags"><span class="tag hi">Zapier</span><span class="tag">Asana</span><span class="tag">CRM</span></div>
+        <h3>Every lead stage has a job to do, automatically</h3>
+        <div class="io">Stage change <span class="arrow">→</span> its own follow-up path ×5</div>
+        <p>Updating a lead's status now triggers its own path: a lead folder and content task on kickoff, a two-step nurture sequence on no response, quote follow-ups, a welcome email and PDF on approval, and a referral ask once paid and closed.</p>
+        <div class="result">Every stage follows up on itself — <b>nothing waits on someone's memory</b>.</div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-tags"><span class="tag hi">Zapier</span><span class="tag">Apollo</span><span class="tag">Lead Routing</span></div>
+        <h3>Leads arrive already qualified</h3>
+        <div class="io">New lead <span class="arrow">→</span> Apollo enrich <span class="arrow">→</span> priority split <span class="arrow">→</span> Slack + draft</div>
+        <p>A webhook catches the new lead, pulls the company URL, enriches it through Apollo, then splits by priority — high-priority leads get saved, Slacked to sales, and an AI-drafted outreach email; lower-priority leads get a quieter notification.</p>
+        <div class="result">Sales opens a Slack message already knowing who the lead is — <b>with an email already drafted</b>.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="sec-head reveal">
+      <span class="node-label">What people say</span>
+      <h2>Feedback from the inbox.</h2>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote reveal">
+        <p>"She's amazing already — so happy she's here."</p>
+        <footer>TEAMMATE · REMOTE OPERATIONS TEAM</footer>
+      </blockquote>
+      <blockquote class="quote reveal">
+        <p>"You're amazing at how quickly you turn around the videos. Thank you for making such a good impression."</p>
+        <footer>CLIENT · VIDEO & CONTENT PROJECT</footer>
+      </blockquote>
+      <blockquote class="quote reveal">
+        <p>"I'm very happy to work with you."</p>
+        <footer>CLIENT · LONG-TERM RETAINER</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="sec-head reveal">
+      <span class="node-label">Tool stack</span>
+      <h2>What I build with</h2>
+    </div>
+    <div class="stack reveal">
+      <span class="chip">Zapier</span><span class="chip">Make</span><span class="chip">Asana</span>
+      <span class="chip">GoHighLevel (CRM)</span><span class="chip">Apollo</span>
+      <span class="chip">Google Gemini / AI Agents</span><span class="chip">Webhooks</span>
+      <span class="chip">Google Workspace</span><span class="chip">Slack</span>
+      <span class="chip">Gmail & Outlook</span><span class="chip">Google Sheets</span>
+      <span class="chip">Canva</span><span class="chip">Todoist</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head reveal">
+      <span class="node-label">Experience & credentials</span>
+      <h2>Seven years inside real operations.</h2>
+    </div>
+    <ul class="timeline">
+      <li class="reveal">
+        <span class="when">MAY 2025 — PRESENT</span>
+        <h3>Executive Virtual Assistant · US-based financial services (remote)</h3>
+        <p>Inbox, calendar, CRM, and client ops for a financial services leader.</p>
+      </li>
+      <li class="reveal">
+        <span class="when">AUG 2018 — MAR 2025</span>
+        <h3>Admin Officer · Robinson Department Store</h3>
+        <p>Inventory, vendor billing, reporting, and HR coordination.</p>
+      </li>
+      <li class="reveal">
+        <span class="when">EDUCATION</span>
+        <h3>BS Office Management · Bulacan Polytechnic College</h3>
+        <p>Plus Bookkeeping NC3 (TESDA). Full CV with the calendar-optimization case study available on request.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact reveal" id="contact">
+    <span class="node-label" style="color:var(--amber)">Final step · Trigger</span>
+    <h2>Let's find the 10 hours a week<br>your business is leaking.</h2>
+    <p>A 20-minute call is enough to spot the first two or three workflows worth automating — no pitch, just a look at where your time actually goes.</p>
+    <a class="btn" href="https://calendly.com/dionisiochell/discoverycallwithchell" target="_blank" rel="noopener">Book a discovery call →</a>
+  </div>
+
+</main>
+
+<footer class="site">
+  <span>© 2026 Rachell Dionisio — Operations & Automation</span>
+  <span>Built like everything else here: simple, reliable, and running on its own.</span>
+</footer>
+
+<script>
+// scenario: pulse travels through nodes
+(function(){
+  const steps=[...document.querySelectorAll('#flow li')];
+  if(!steps.length)return;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){steps.forEach(s=>s.classList.add('on'));return;}
+  let i=0;
+  setInterval(()=>{
+    steps.forEach((s,idx)=>s.classList.toggle('on',idx<=i));
+    i=(i+1)%(steps.length+2); // brief pause at the end
+  },900);
+})();
+
+// reveal on scroll
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
